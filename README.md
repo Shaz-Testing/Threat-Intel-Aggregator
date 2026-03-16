@@ -9,7 +9,13 @@
 
 ---
 
-## 📸 Features
+## 📸 Screenshot
+
+![ThreatIQ Dashboard](docs/dashboard-screenshot.svg)
+
+---
+
+## ✨ Features
 
 - **Multi-source ingestion** — NVD/CVE, Exploit-DB, MITRE ATT&CK, AlienVault OTX, and AbuseIPDB
 - **AI-powered summarization** — Claude API condenses complex advisories into actionable intel
