@@ -1,0 +1,153 @@
+# Generate dashboard screenshot as SVG for README
+svg = '''<svg width="900" height="580" xmlns="http://www.w3.org/2000/svg" font-family="monospace, ui-monospace">
+  <!-- Background -->
+  <rect width="900" height="580" fill="#070a12" rx="10"/>
+  
+  <!-- Sidebar -->
+  <rect width="175" height="580" fill="#0f1117" rx="10"/>
+  <rect x="165" width="10" height="580" fill="#0f1117"/>
+  <rect x="175" y="0" width="0.5" height="580" fill="#1e2130"/>
+  
+  <!-- Logo area -->
+  <rect x="0" y="0" width="175" height="58" fill="#0f1117"/>
+  <rect x="0" y="57.5" width="175" height="0.5" fill="#1e2130"/>
+  <text x="16" y="30" fill="#e24b4a" font-size="16">⚠</text>
+  <text x="36" y="28" fill="#ffffff" font-size="13" font-weight="500">ThreatIQ</text>
+  <text x="36" y="42" fill="#4a5280" font-size="10">intel aggregator</text>
+  
+  <!-- Nav items -->
+  <rect x="8" y="68" width="159" height="28" fill="#1a0808" rx="6"/>
+  <circle cx="22" cy="82" r="3" fill="#e24b4a" opacity="0.6"/>
+  <text x="32" y="86" fill="#e24b4a" font-size="11">Dashboard</text>
+  
+  <circle cx="22" cy="112" r="3" fill="#6b7280" opacity="0.6"/>
+  <text x="32" y="116" fill="#6b7280" font-size="11">Threats</text>
+  
+  <circle cx="22" cy="140" r="3" fill="#6b7280" opacity="0.6"/>
+  <text x="32" y="144" fill="#6b7280" font-size="11">CVEs</text>
+  
+  <circle cx="22" cy="168" r="3" fill="#6b7280" opacity="0.6"/>
+  <text x="32" y="172" fill="#6b7280" font-size="11">IOCs</text>
+  
+  <!-- Scrape button -->
+  <rect x="8" y="536" width="159" height="32" fill="#9a1c1c" rx="6"/>
+  <text x="87" y="557" fill="#fca5a5" font-size="10" font-weight="500" text-anchor="middle">▶ Run Scrape Now</text>
+  
+  <!-- MAIN CONTENT -->
+  <!-- Page title -->
+  <text x="195" y="32" fill="#f1f5f9" font-size="14" font-weight="500">Threat Intelligence Dashboard</text>
+  <text x="195" y="48" fill="#4a5280" font-size="10">AI-powered aggregation · auto-refreshes every 30s</text>
+  
+  <!-- Refresh button -->
+  <rect x="820" y="18" width="68" height="24" fill="#111827" rx="5" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="854" y="34" fill="#6b7280" font-size="10" text-anchor="middle">↻ Refresh</text>
+  
+  <!-- Search bar -->
+  <rect x="195" y="62" width="693" height="32" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="214" y="82" fill="#374151" font-size="12">🔍</text>
+  <text x="232" y="82" fill="#374151" font-size="11">Search threats, CVEs, tags...</text>
+  
+  <!-- Stat cards -->
+  <rect x="195" y="108" width="165" height="64" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="209" y="126" fill="#4a5280" font-size="9" letter-spacing="0.5">TOTAL THREATS</text>
+  <text x="209" y="156" fill="#f1f5f9" font-size="26" font-weight="500">2,847</text>
+  
+  <rect x="370" y="108" width="165" height="64" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="384" y="126" fill="#4a5280" font-size="9" letter-spacing="0.5">CRITICAL</text>
+  <text x="384" y="156" fill="#e24b4a" font-size="26" font-weight="500">143</text>
+  
+  <rect x="545" y="108" width="165" height="64" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="559" y="126" fill="#4a5280" font-size="9" letter-spacing="0.5">HIGH</text>
+  <text x="559" y="156" fill="#f97316" font-size="26" font-weight="500">518</text>
+  
+  <rect x="720" y="108" width="168" height="64" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="734" y="126" fill="#4a5280" font-size="9" letter-spacing="0.5">MEDIUM</text>
+  <text x="734" y="156" fill="#eab308" font-size="26" font-weight="500">1,204</text>
+  
+  <!-- Charts row -->
+  <!-- Severity bar chart -->
+  <rect x="195" y="186" width="336" height="150" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="209" y="205" fill="#9ca3af" font-size="10">Threats by severity</text>
+  <!-- Bars -->
+  <rect x="235" y="270" width="44" height="45" fill="#e24b4a" rx="3"/>
+  <text x="257" y="265" fill="#6b7280" font-size="8" text-anchor="middle">143</text>
+  <text x="257" y="328" fill="#4a5280" font-size="8" text-anchor="middle">CRIT</text>
+  
+  <rect x="300" y="235" width="44" height="80" fill="#f97316" rx="3"/>
+  <text x="322" y="230" fill="#6b7280" font-size="8" text-anchor="middle">518</text>
+  <text x="322" y="328" fill="#4a5280" font-size="8" text-anchor="middle">HIGH</text>
+  
+  <rect x="365" y="225" width="44" height="90" fill="#eab308" rx="3"/>
+  <text x="387" y="220" fill="#6b7280" font-size="8" text-anchor="middle">1204</text>
+  <text x="387" y="328" fill="#4a5280" font-size="8" text-anchor="middle">MED</text>
+  
+  <rect x="430" y="248" width="44" height="67" fill="#22c55e" rx="3"/>
+  <text x="452" y="243" fill="#6b7280" font-size="8" text-anchor="middle">982</text>
+  <text x="452" y="328" fill="#4a5280" font-size="8" text-anchor="middle">LOW</text>
+
+  <!-- Donut chart -->
+  <rect x="541" y="186" width="347" height="150" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="555" y="205" fill="#9ca3af" font-size="10">Threats by source</text>
+  <!-- Donut -->
+  <circle cx="634" cy="268" r="44" fill="none" stroke="#1e2a3a" stroke-width="22"/>
+  <circle cx="634" cy="268" r="44" fill="none" stroke="#3b82f6" stroke-width="22" stroke-dasharray="110 166" stroke-dashoffset="0" transform="rotate(-90 634 268)"/>
+  <circle cx="634" cy="268" r="44" fill="none" stroke="#e24b4a" stroke-width="22" stroke-dasharray="64 212" stroke-dashoffset="-110" transform="rotate(-90 634 268)"/>
+  <circle cx="634" cy="268" r="44" fill="none" stroke="#a855f7" stroke-width="22" stroke-dasharray="41 235" stroke-dashoffset="-174" transform="rotate(-90 634 268)"/>
+  <circle cx="634" cy="268" r="44" fill="none" stroke="#eab308" stroke-width="22" stroke-dasharray="35 241" stroke-dashoffset="-215" transform="rotate(-90 634 268)"/>
+  <text x="634" y="272" fill="#9ca3af" font-size="9" text-anchor="middle">2847</text>
+  <!-- Legend -->
+  <circle cx="700" cy="232" r="5" fill="#3b82f6"/>
+  <text x="710" y="236" fill="#6b7280" font-size="9">NVD (40%)</text>
+  <circle cx="700" cy="252" r="5" fill="#e24b4a"/>
+  <text x="710" y="256" fill="#6b7280" font-size="9">Exploit-DB (23%)</text>
+  <circle cx="700" cy="272" r="5" fill="#a855f7"/>
+  <text x="710" y="276" fill="#6b7280" font-size="9">OTX (15%)</text>
+  <circle cx="700" cy="292" r="5" fill="#eab308"/>
+  <text x="710" y="296" fill="#6b7280" font-size="9">MITRE (22%)</text>
+  
+  <!-- Top threats card -->
+  <rect x="195" y="350" width="693" height="218" fill="#0d1117" rx="8" stroke="#1e2a3a" stroke-width="0.5"/>
+  <text x="209" y="370" fill="#9ca3af" font-size="10">Top threats by risk score</text>
+  <text x="858" y="370" fill="#e24b4a" font-size="9" text-anchor="end">View all →</text>
+  
+  <!-- Threat row 1 -->
+  <rect x="205" y="378" width="12" height="12" fill="#2d0808" rx="2"/>
+  <text x="211" y="388" fill="#e24b4a" font-size="7" text-anchor="middle">CRIT</text>
+  <rect x="220" y="378" width="24" height="12" fill="#0a1a2d" rx="2"/>
+  <text x="232" y="388" fill="#60a5fa" font-size="7" text-anchor="middle">NVD</text>
+  <text x="250" y="388" fill="#60a5fa" font-size="9">CVE-2024-49138</text>
+  <text x="209" y="402" fill="#cbd5e1" font-size="10">Windows Common Log File System Driver — Privilege Escalation (SYSTEM)</text>
+  <rect x="209" y="408" width="610" height="2" fill="#1a2035" rx="1"/>
+  <rect x="209" y="408" width="604" height="2" fill="#e24b4a" rx="1"/>
+  <text x="826" y="412" fill="#4a5280" font-size="8">9.9</text>
+  <text x="209" y="424" fill="#e24b4a" font-size="8">● PATCH NOW</text>
+  <rect x="195" y="430" width="693" height="0.5" fill="#0f1520"/>
+  
+  <!-- Threat row 2 -->
+  <text x="250" y="447" fill="#f97316" font-size="9">Apache Struts2 RCE — OGNL Injection via malformed HTTP Content-Type</text>
+  <rect x="209" y="452" width="610" height="2" fill="#1a2035" rx="1"/>
+  <rect x="209" y="452" width="586" height="2" fill="#f97316" rx="1"/>
+  <text x="826" y="456" fill="#4a5280" font-size="8">9.6</text>
+  <text x="209" y="468" fill="#e24b4a" font-size="8">● PATCH NOW</text>
+  <rect x="195" y="474" width="693" height="0.5" fill="#0f1520"/>
+  
+  <!-- Threat row 3 -->
+  <text x="250" y="491" fill="#cbd5e1" font-size="9">APT29 Midnight Blizzard — credential harvesting via OAuth token theft</text>
+  <rect x="209" y="496" width="610" height="2" fill="#1a2035" rx="1"/>
+  <rect x="209" y="496" width="524" height="2" fill="#f97316" rx="1"/>
+  <text x="826" y="500" fill="#4a5280" font-size="8">8.6</text>
+  <text x="209" y="512" fill="#eab308" font-size="8">● MONITOR</text>
+  <rect x="195" y="518" width="693" height="0.5" fill="#0f1520"/>
+  
+  <!-- Threat row 4 -->
+  <text x="250" y="536" fill="#cbd5e1" font-size="9">Microsoft SharePoint Server RCE — deserialization flaw, authenticated attacker</text>
+  <rect x="209" y="540" width="610" height="2" fill="#1a2035" rx="1"/>
+  <rect x="209" y="540" width="464" height="2" fill="#f97316" rx="1"/>
+  <text x="826" y="544" fill="#4a5280" font-size="8">7.6</text>
+  <text x="209" y="556" fill="#eab308" font-size="8">● MONITOR</text>
+</svg>'''
+
+with open('/home/claude/threat-intel-aggregator/docs/dashboard-screenshot.svg', 'w') as f:
+    f.write(svg)
+
+print("SVG generated")
