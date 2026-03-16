@@ -1,6 +1,3 @@
-"""
-SQLAlchemy ORM models for threats and IOCs.
-"""
 from datetime import datetime
 from sqlalchemy import String, Float, DateTime, Text, ForeignKey, JSON
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -11,35 +8,28 @@ class Threat(Base):
     __tablename__ = "threats"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    source: Mapped[str] = mapped_column(String(50))           # nvd, exploitdb, otx, mitre
+    source: Mapped[str] = mapped_column(String(50))
     source_id: Mapped[str] = mapped_column(String(100), unique=True, index=True)
     title: Mapped[str] = mapped_column(String(500))
     description: Mapped[str] = mapped_column(Text)
     url: Mapped[str] = mapped_column(String(1000), default="")
-
-    # AI-generated fields
     ai_summary: Mapped[str] = mapped_column(Text, default="")
     ai_tags: Mapped[list] = mapped_column(JSON, default=list)
     ai_affected_products: Mapped[list] = mapped_column(JSON, default=list)
     ai_mitre_techniques: Mapped[list] = mapped_column(JSON, default=list)
     ai_remediation_priority: Mapped[str] = mapped_column(String(50), default="")
-
-    # Scoring
     cvss_score: Mapped[float] = mapped_column(Float, default=0.0)
-    risk_score: Mapped[float] = mapped_column(Float, default=0.0)   # composite score
-    severity: Mapped[str] = mapped_column(String(20), default="")   # CRITICAL/HIGH/MEDIUM/LOW
-
-    # CVE-specific
+    risk_score: Mapped[float] = mapped_column(Float, default=0.0)
+    severity: Mapped[str] = mapped_column(String(20), default="")
     cve_id: Mapped[str] = mapped_column(String(30), default="", index=True)
     cwe_ids: Mapped[list] = mapped_column(JSON, default=list)
-
     published_at: Mapped[datetime] = mapped_column(DateTime, nullable=True)
     ingested_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     enriched_at: Mapped[datetime] = mapped_column(DateTime, nullable=True)
 
-    iocs: Mapped[list["IOC"]] = relationship("IOC", back_populates="threat", cascade="all, delete-orphan")
+    iocs: Mapped[list["IOC"]] = relationship("IOC", back_populates="threat", cascade="all, delete-orphan", lazy="noload")
 
-    def to_dict(self):
+    def to_dict(self, include_iocs=False):
         return {
             "id": self.id,
             "source": self.source,
@@ -59,7 +49,7 @@ class Threat(Base):
             "cwe_ids": self.cwe_ids,
             "published_at": self.published_at.isoformat() if self.published_at else None,
             "ingested_at": self.ingested_at.isoformat() if self.ingested_at else None,
-            "iocs": [ioc.to_dict() for ioc in self.iocs],
+            "iocs": [],
         }
 
 
@@ -68,7 +58,7 @@ class IOC(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     threat_id: Mapped[int] = mapped_column(ForeignKey("threats.id"))
-    ioc_type: Mapped[str] = mapped_column(String(20))    # ip, domain, hash, url, cve
+    ioc_type: Mapped[str] = mapped_column(String(20))
     value: Mapped[str] = mapped_column(String(500), index=True)
     context: Mapped[str] = mapped_column(String(200), default="")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
